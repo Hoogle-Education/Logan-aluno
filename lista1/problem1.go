@@ -27,16 +27,18 @@ func sequenceParser(length int) string {
 		dif := next - current
 		dif = math.Abs(dif) // pego o valor absoluto/ sem sinal
 
-		if current > next && dif >= epsilon {
-			fmt.Print("+")
-		}
+		if dif >= epsilon {
 
-		if current < next && dif >= epsilon {
-			fmt.Print("-")
-		}
+			if current > next {
+				fmt.Println("+")
+			}
 
-		if dif < epsilon {
-			fmt.Print("0")
+			if current < next {
+				fmt.Println("-")
+			}
+
+		} else {
+			fmt.Println("0")
 		}
 	}
 
