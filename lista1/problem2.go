@@ -17,13 +17,29 @@ func main() {
 			os.Exit(3)
 		}
 	}
-
+	fmt.Println("Output:")
 	result := Sottostringhe(input)
+	counting := 0
+	for allowedSize := 2; true; allowedSize++ {
+		counting += allowedPrint(result, allowedSize)
+		if counting == len(result) {
+			break
+		}
+	}
+}
 
+func allowedPrint(result map[string]int, allowedSize int) int {
+
+	count := 0
 	for key, element := range result {
-		fmt.Println(key, " ", element)
+
+		if len(key) == allowedSize {
+			fmt.Println(key, " ", element)
+			count++
+		}
 	}
 
+	return count
 }
 
 func Sottostringhe(input string) map[string]int {
